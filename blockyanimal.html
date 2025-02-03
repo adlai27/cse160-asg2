@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>3D Cat Project</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    #controls {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 10px;
+    }
+    .control-column {
+      margin: 0 20px 20px 0;
+    }
+    .slider-group {
+      margin-bottom: 10px;
+    }
+    label {
+      display: inline-block;
+      width: 140px;
+    }
+    canvas {
+      border: 1px solid black;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body onload="main()">
+
+  <h2 style="margin-left:10px;">3D Cat Project</h2>
+
+  <div id="display-container" style="display:inline-block;">
+    <canvas id="webgl" width="650" height="650">
+      Please use a browser that supports "canvas" and WebGL.
+    </canvas>
+  </div>
+
+  <div id="controls">
+
+    <!-- Camera Angles -->
+    <div class="control-column">
+      <h3>Camera Angle</h3>
+      <div class="slider-group">
+        <label for="cam-angle-x">X:</label>
+        <input type="range" id="cam-angle-x" min="-90" max="90" step="1" value="30"/>
+      </div>
+      <div class="slider-group">
+        <label for="cam-angle-y">Y:</label>
+        <input type="range" id="cam-angle-y" min="-90" max="90" step="1" value="30"/>
+      </div>
+      <div class="slider-group">
+        <label for="cam-angle-z">Z:</label>
+        <input type="range" id="cam-angle-z" min="-90" max="90" step="1" value="0"/>
+      </div>
+    </div>
+
+    <!-- Head Controls -->
+    <div class="control-column">
+      <h3>Head Controls:</h3>
+      <div class="slider-group">
+        <label for="h-slider-x">X:</label>
+        <input type="range" id="h-slider-x" min="-30" max="30" step="1" value="0"/>
+      </div>
+      <div class="slider-group">
+        <label for="h-slider-y">Y:</label>
+        <input type="range" id="h-slider-y" min="-30" max="30" step="1" value="0"/>
+      </div>
+      <div class="slider-group">
+        <label for="h-slider-z">Z:</label>
+        <input type="range" id="h-slider-z" min="-30" max="30" step="1" value="0"/>
+      </div>
+    </div>
+
+    <!-- Front Left Leg Controls -->
+    <div class="control-column">
+      <h3>Front Left Leg Controls:</h3>
+      <div class="slider-group">
+        <label for="front-left-leg-upper-slider">Upper Leg</label>
+        <input type="range" id="front-left-leg-upper-slider" min="-50" max="50" step="1" value="10"/>
+      </div>
+      <div class="slider-group">
+        <label for="front-left-leg-lower-slider">Knee</label>
+        <input type="range" id="front-left-leg-lower-slider" min="-50" max="50" step="1" value="0"/>
+      </div>
+      <!-- PAW SLIDER -->
+      <div class="slider-group">
+        <label for="front-left-leg-paw-slider">Paw</label>
+        <input type="range" id="front-left-leg-paw-slider" min="-50" max="50" step="1" value="0"/>
+      </div>
+    </div>
+
+    <!-- Front Right Leg Controls -->
+    <div class="control-column">
+      <h3>Front Right Leg Controls:</h3>
+      <div class="slider-group">
+        <label for="front-right-leg-upper-slider">Upper Leg</label>
+        <input type="range" id="front-right-leg-upper-slider" min="-50" max="50" step="1" value="10"/>
+      </div>
+      <div class="slider-group">
+        <label for="front-right-leg-lower-slider">Knee</label>
+        <input type="range" id="front-right-leg-lower-slider" min="-50" max="50" step="1" value="0"/>
+      </div>
+      <!-- PAW SLIDER -->
+      <div class="slider-group">
+        <label for="front-right-leg-paw-slider">Paw</label>
+        <input type="range" id="front-right-leg-paw-slider" min="-50" max="50" step="1" value="0"/>
+      </div>
+    </div>
+
+    <!-- Back Left Leg Controls -->
+    <div class="control-column">
+      <h3>Back Left Leg Controls:</h3>
+      <div class="slider-group">
+        <label for="back-left-leg-upper-slider">Upper Leg</label>
+        <input type="range" id="back-left-leg-upper-slider" min="-50" max="50" step="1" value="-20"/>
+      </div>
+      <div class="slider-group">
+        <label for="back-left-leg-lower-slider">Knee</label>
+        <input type="range" id="back-left-leg-lower-slider" min="-50" max="80" step="1" value="40"/>
+      </div>
+      <!-- PAW SLIDER  -->
+      <div class="slider-group">
+        <label for="back-left-leg-paw-slider">Paw</label>
+        <input type="range" id="back-left-leg-paw-slider" min="-50" max="50" step="1" value="0"/>
+      </div>
+    </div>
+
+    <!-- Back Right Leg Controls -->
+    <div class="control-column">
+      <h3>Back Right Leg Controls:</h3>
+      <div class="slider-group">
+        <label for="back-right-leg-upper-slider">Upper Leg</label>
+        <input type="range" id="back-right-leg-upper-slider" min="-50" max="50" step="1" value="-20"/>
+      </div>
+      <div class="slider-group">
+        <label for="back-right-leg-lower-slider">Knee</label>
+        <input type="range" id="back-right-leg-lower-slider" min="-50" max="80" step="1" value="40"/>
+      </div>
+      <!-- PAW SLIDER -->
+      <div class="slider-group">
+        <label for="back-right-leg-paw-slider">Paw</label>
+        <input type="range" id="back-right-leg-paw-slider" min="-50" max="50" step="1" value="0"/>
+      </div>
+    </div>
+    
+    <!-- Animation / Shift-Click toggles -->
+    <div class="control-column">
+      <h3>Controls</h3>
+      <button id="toggle-animation">Toggle Animation</button>
+      <br/><br/>
+      <button id="toggle-shift">Toggle ShiftClick mode</button>
+    </div>
+
+  </div> <!-- end #controls -->
+
+  <!-- Display performance (fps) -->
+  <div id="performance-display" style="margin:10px;"></div>
+
+  <!-- WebGL libraries -->
+  <script src="lib/webgl-utils.js"></script>
+  <script src="lib/webgl-debug.js"></script>
+  <script src="lib/cuon-utils.js"></script>
+  <script src="lib/cuon-matrix-cse160.js"></script>
+
+  <!-- Shape files -->
+  <script src="Cube.js"></script>
+  <script src="pyramid.js"></script>
+  <script src="triangle.js"></script>
+  <script src="circle.js"></script> 
+  <script src="cylinder.js"></script>
+
+  <!-- Main JavaScript -->
+  <script src="blockyanimal.js"></script>
+</body>
+</html>
