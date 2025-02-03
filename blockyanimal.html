@@ -32,7 +32,9 @@
 </head>
 <body onload="main()">
 
-  <h2 style="margin-left:10px;">3D Cat Project</h2>
+  <h2 style="margin-left:10px;">3D Blocky Cat Project</h2>
+  <h3 style="margin-left:10px;">adlai</h3>
+
 
   <div id="display-container" style="display:inline-block;">
     <canvas id="webgl" width="650" height="650">
@@ -41,6 +43,14 @@
   </div>
 
   <div id="controls">
+
+    <!-- Animation / Shift-Click toggles -->
+    <div class="control-column">
+      <h3>Controls</h3>
+      <button id="toggle-animation">Animation Button: Walking</button>
+      <br/><br/>
+      <button id="toggle-shift">Poke ShiftClick Button: Jumping/Shaking</button>
+    </div>
 
     <!-- Camera Angles -->
     <div class="control-column">
@@ -148,13 +158,7 @@
       </div>
     </div>
     
-    <!-- Animation / Shift-Click toggles -->
-    <div class="control-column">
-      <h3>Controls</h3>
-      <button id="toggle-animation">Toggle Animation</button>
-      <br/><br/>
-      <button id="toggle-shift">Toggle ShiftClick mode</button>
-    </div>
+    
 
   </div> <!-- end #controls -->
 
