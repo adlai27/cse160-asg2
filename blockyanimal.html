@@ -44,23 +44,6 @@
 
   <div id="controls">
 
-    <!-- Camera Angles -->
-    <div class="control-column">
-      <h3>Angle</h3>
-      <div class="slider-group">
-        <label for="cam-angle-x">X:</label>
-        <input type="range" id="cam-angle-x" min="-90" max="90" step="1" value="30"/>
-      </div>
-      <div class="slider-group">
-        <label for="cam-angle-y">Y:</label>
-        <input type="range" id="cam-angle-y" min="-90" max="90" step="1" value="30"/>
-      </div>
-      <div class="slider-group">
-        <label for="cam-angle-z">Z:</label>
-        <input type="range" id="cam-angle-z" min="-90" max="90" step="1" value="0"/>
-      </div>
-    </div>
-
     <!-- Head Controls -->
     <div class="control-column">
       <h3>Controls - Head:</h3>
@@ -150,7 +133,24 @@
       </div>
     </div>
 
-     <!-- Animation / Shift-Click toggles -->
+    <!-- Camera Angles -->
+    <div class="control-column">
+      <h3>Angles</h3>
+      <div class="slider-group">
+        <label for="cam-angle-x">X:</label>
+        <input type="range" id="cam-angle-x" min="-90" max="90" step="1" value="30"/>
+      </div>
+      <div class="slider-group">
+        <label for="cam-angle-y">Y:</label>
+        <input type="range" id="cam-angle-y" min="-90" max="90" step="1" value="30"/>
+      </div>
+      <div class="slider-group">
+        <label for="cam-angle-z">Z:</label>
+        <input type="range" id="cam-angle-z" min="-90" max="90" step="1" value="0"/>
+      </div>
+    </div>
+
+    <!-- Animation / Shift-Click toggles -->
     <div class="control-column">
       <h3>Controls</h3>
       <button id="toggle-animation">Animation Button: Walking</button>
